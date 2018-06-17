@@ -1,19 +1,16 @@
 # minimal triangle
-
 ![preview](/images/preview.png)
 
 ## about
-*minimal triangle* is a minimalistic and experimental font which is created under restrictions: for any letter l of Latin alphabet,
+*minimal triangle* is a minimalistic and experimental font which is created under restrictions: for any letter 𝑙 of Latin alphabet,
 
-- the number of edges of l must be as less as possible
-- the number of vertices of l must be as less as possible
-- for any edge e of l, e must be inside of a right bottom isosceles right triangle
-- for any vertex v of the triangle, for some edge e, e must touch v
+- the number of edges (resp. vertices) of 𝑙 must be as less as possible
+- for any edge 𝑒 of 𝑙, 𝑒 must be inside of a right bottom isosceles right triangle
+- for any vertex 𝑣 of the triangle, for some edge 𝑒, 𝑒 must touch 𝑣.
 
 The font has no destinction between uppercase and lowercase and therefore it has only 26 letters.
 
 ## to-do
-
 - make this an actual font file
 
 ## acknowledgement
