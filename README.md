@@ -10,6 +10,11 @@
 
 The font has no destinction between uppercase and lowercase and therefore it has only 26 letters.
 
+# example
+
+the quick brown fox jumps over the lazy dog
+![example](/images/fox.png)
+
 ## to-do
 - make this an actual font file
 
