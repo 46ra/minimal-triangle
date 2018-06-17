@@ -10,9 +10,11 @@
 - for any edge e of l, e must be inside of a right bottom isosceles right triangle
 - for any vertex v of the triangle, for some edge e, e must touch v
 
-with 'F' being an exception.
-
 The font has no destinction between uppercase and lowercase and therefore it has only 26 letters.
+
+## to-do
+
+- make this an actual font file
 
 ## acknowledgement
 i appreciate:
