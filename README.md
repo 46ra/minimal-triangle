@@ -4,7 +4,7 @@
 ## about
 *minimal triangle* is a minimalistic and experimental font which is created under restrictions: for any letter 𝑙 of Latin alphabet,
 
-- the number of edges (resp. vertices) of 𝑙 must be as less as possible
+- the number of edges (resp. vertices) of 𝑙 must be as fewer as possible
 - for any edge 𝑒 of 𝑙, 𝑒 must be inside of a right bottom isosceles right triangle
 - for any vertex 𝑣 of the triangle, for some edge 𝑒, 𝑒 must touch 𝑣.
 
