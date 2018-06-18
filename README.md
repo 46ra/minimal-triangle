@@ -6,7 +6,7 @@
 
 - the number of edges (resp. vertices) of 𝑙 must be as fewer as possible
 - for any edge 𝑒 of 𝑙, 𝑒 must be inside of a right bottom isosceles right triangle
-- for any vertex 𝑣 of the triangle, for some edge 𝑒, 𝑒 must touch 𝑣.
+- for any vertex 𝑣 of the triangle, for some edge 𝑒 of 𝑙, 𝑒 must touch 𝑣.
 
 The font has no destinction between uppercase and lowercase and therefore it has only 26 letters.
 
