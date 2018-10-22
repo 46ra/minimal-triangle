@@ -1,0 +1,72 @@
+<html lang="en">
+
+<head>
+  <title>try Minimal-triangle</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+  <textarea class="trigger" id="input" autofocus></textarea>
+
+  <table id="options">
+    <tr>
+      <td>letter width</td>
+      <td>(nonnegative int)</td>
+      <td>
+        <input class="trigger" id="letter-w" type="number" min="0" value="128"> [px]
+      </td>
+    </tr>
+
+    <tr>
+      <td>line width</td>
+      <td>(positive int)</td>
+      <td>
+        <input class="trigger" id="line-w" type="number" min="1" value="1"> [px]
+      </td>
+    </tr>
+
+    <tr>
+      <td>space width</td>
+      <td>(float)</td>
+      <td>
+        <input class="trigger" id="space-w" type="number" value="0" step="any"> [letter]
+      </td>
+    </tr>
+
+    <tr>
+      <td>space height</td>
+      <td>(float)</td>
+      <td>
+        <input class="trigger" id="space-h" type="number" value="0.5" step="any"> [letter]
+      </td>
+    </tr>
+
+    <tr>
+      <td>margin</td>
+      <td>(nonnegative float)</td>
+      <td>
+        <input class="trigger" id="margin" type="number" min="0" value="0.5" step="any"> [letter]
+      </td>
+    </tr>
+
+    <tr>
+      <td>color</td>
+      <td>(color)</td>
+      <td>
+        <input class="trigger" id="color" type="color" colorformat="rgba" value="#000000">
+      </td>
+    </tr>
+
+    <tr>
+      <td>background color</td>
+      <td>(color)</td>
+      <td>
+        <input class="trigger" id="bg-color" type="color" colorformat="rgba" value="#ffffff">
+      </td>
+    </tr>
+  </table>
+  <canvas id="output"></canvas>
+</body>
+
+</html>
