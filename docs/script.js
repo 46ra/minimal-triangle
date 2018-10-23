@@ -9,10 +9,13 @@ const pos = {
 
 const charToPaths = {
   " ": [],
-  ".": [[[3, 3], [4, 4]]],
+  ".": [[[4, 3], [4, 4]]],
   ",": [[[4, 3], [3, 4]]],
   "-": [[pos.cl, pos.cr]],
-  "'": [[pos.t, [4, 1]]],
+  "'": [[pos.t, [3, 1]]],
+  "`": [[pos.t, [4, 1]]],
+  ":": [[pos.t, [4, 1]], [[4, 3], pos.br]],
+  ";": [[pos.t, [4, 1]], [[4, 3], [3, 4]]],
   a: [[pos.bl, pos.t, pos.br], [pos.cl, pos.cr]],
   b: [[pos.bl, pos.t, pos.br, pos.bl], [pos.cl, pos.cr]],
   c: [[pos.cr, pos.t, pos.bl, pos.br]],
@@ -55,22 +58,15 @@ const render = () => {
   const input = document.getElementById("input").value;
   const lines = input.split(/\r?\n/);
   const letterW = parseInt(document.getElementById("letter-w").value);
-  const margin = parseFloat(document.getElementById("margin").value);
-  const lineW = parseInt(document.getElementById("line-w").value);
-  ctx.lineWidth = lineW;
-
   const spaceX = parseFloat(document.getElementById("space-x").value);
   const spaceY = parseFloat(document.getElementById("space-y").value);
-
+  const margin = parseFloat(document.getElementById("margin").value);
   const lenX = Math.max(...lines.map(line => line.length));
   const lenY = lines.length;
   canvas.width = (margin * 2 + lenX + (lenX - 1) * spaceX) * letterW;
   canvas.height = (margin * 2 + lenY + (lenY - 1) * spaceY) * letterW;
 
-  const color = document.getElementById("color").value;
-  ctx.strokeStyle = color;
-  const bgColor = document.getElementById("bg-color").value;
-  ctx.fillStyle = bgColor;
+  ctx.fillStyle = document.getElementById("bg-color").value;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   for (const [j, line] of lines.entries())
@@ -88,6 +84,16 @@ const render = () => {
             spaceY
           )
         );
+
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.lineWidth = parseInt(document.getElementById("line-w").value);
+
+        ctx.strokeStyle = document.getElementById("color").value;
+        /* ctx.imageSmoothingEnabled = document.getElementById(
+          "smoothing"
+        ).checked; */
+
         for (const [x, y] of path.slice(1))
           ctx.lineTo(
             ...coordinate(x, y, i, j, letterW, margin, spaceX, spaceY)
