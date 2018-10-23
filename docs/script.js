@@ -36,7 +36,8 @@ const charToPaths = {
   r: [[pos.bl, pos.t, pos.cr, pos.cl, pos.br]],
   s: [[pos.t, pos.cl, pos.cr, pos.br, pos.bl]],
   t: [[pos.bl, pos.t], [pos.cl, pos.br]],
-  u: [[pos.bl, pos.cl, pos.bc, pos.br, pos.t]],
+  // u: [[pos.bl, pos.cl, pos.bc, pos.br, pos.t]],
+  u: [[pos.cl, pos.bl, pos.br, pos.t]],
   v: [[pos.bl, pos.cl, pos.br, pos.t]],
   w: [[pos.bl, [1, 3], pos.bc, pos.cl, pos.br, pos.t]],
   x: [[pos.bl, pos.cl, pos.br], [pos.t, pos.cr, pos.bc]],
@@ -69,6 +70,7 @@ const render = () => {
   ctx.fillStyle = document.getElementById("bg-color").value;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+  ctx.beginPath();
   for (const [j, line] of lines.entries())
     for (const [i, char] of line.split("").entries())
       for (const path of charToPaths[char.toLowerCase()]) {
@@ -98,8 +100,9 @@ const render = () => {
           ctx.lineTo(
             ...coordinate(x, y, i, j, letterW, margin, spaceX, spaceY)
           );
-        ctx.stroke();
       }
+  ctx.stroke();
+  ctx.closepath();
 };
 const coordinate = (x, y, i, j, letterW, margin, spaceX, spaceY) => [
   (margin + i * (1 + spaceX) + x / unit) * letterW,
