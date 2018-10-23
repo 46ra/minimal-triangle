@@ -48,8 +48,48 @@ const charToPaths = {
 const unit = 4;
 
 document.addEventListener("DOMContentLoaded", event => {
+  let query = {};
+  for (const pair of window.location.search.substring(1).split("&")) {
+    const [key, value] = pair.split("=");
+    query[decodeURIComponent(key)] = decodeURIComponent(value);
+  }
+
+  for (const [f, id] of [
+    [x => x, "input"],
+    [parseInt, "letter-w"],
+    [parseInt, "line-w"],
+    [parseFloat, "space-x"],
+    [parseFloat, "space-y"],
+    [parseFloat, "margin"],
+    [x => x, "color"],
+    [x => x, "bg-color"]
+  ])
+    if (query[id]) document.getElementById(id).value = f(query[id]);
+
+  render();
+
   for (const element of document.getElementsByClassName("trigger"))
-    element.addEventListener("input", render);
+    element.addEventListener("input", () => {
+      render();
+
+      const queryString =
+        "?" +
+        [
+          "letter-w",
+          "line-w",
+          "space-x",
+          "space-y",
+          "margin",
+          "color",
+          "bg-color",
+          "input"
+        ]
+          .map(id => id + "=" + document.getElementById(id).value)
+          .join("&");
+
+      window.location.search =
+        window.location.search.split("?")[0] + queryString;
+    });
 });
 
 const render = () => {
@@ -103,6 +143,7 @@ const render = () => {
       }
   ctx.stroke();
 };
+
 const coordinate = (x, y, i, j, letterW, margin, spaceX, spaceY) => [
   (margin + i * (1 + spaceX) + x / unit) * letterW,
   (margin + j * (1 + spaceY) + y / unit) * letterW
