@@ -102,7 +102,6 @@ const render = () => {
           );
       }
   ctx.stroke();
-  ctx.closepath();
 };
 const coordinate = (x, y, i, j, letterW, margin, spaceX, spaceY) => [
   (margin + i * (1 + spaceX) + x / unit) * letterW,
