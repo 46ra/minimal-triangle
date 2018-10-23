@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", event => {
   for (const element of document.getElementsByClassName("trigger"))
     element.addEventListener("input", render);
 
-  document.getElementById("update-url").addEventListener("click", () => {
+  document.getElementById("input").addEventListener("focusout", () => {
     const queryString =
       "?" + [
         "letter-w",
