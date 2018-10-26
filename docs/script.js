@@ -108,9 +108,13 @@ const charToPaths = {
   s: [
     [pos.t, pos.cl, pos.cr, pos.br, pos.bl]
   ],
-  t: [
+  /*t: [
     [pos.bl, pos.t],
     [pos.cl, pos.br]
+  ],*/
+  t: [
+    [pos.cl, pos.t, pos.br],
+    [pos.cr, pos.bc, pos.bl]
   ],
   // u: [[pos.bl, pos.cl, pos.bc, pos.br, pos.t]],
   u: [
