@@ -143,9 +143,9 @@ const unit = 4;
 
 document.addEventListener("DOMContentLoaded", event => {
   let query = {};
-  for (const pair of window.location.search.substring(1).split("&")) {
+  for (const pair of decodeURIComponent(window.location.search).substring(1).split("&")) {
     const [key, value] = pair.split("=");
-    query[decodeURIComponent(key)] = decodeURIComponent(value);
+    query[key] = value;
   }
 
   for (const [f, id] of [
@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", event => {
       .join("&");
 
     window.location.search =
-      window.location.search.split("?")[0] + queryString;
+      encodeURIComponent(window.location.search.split("?")[0] + queryString);
   })
 });
 
