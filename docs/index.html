@@ -1,38 +1,38 @@
 <html lang="en">
 
 <head>
-  <title>render Minimal-triangle</title>
+  <title>render minimal-triangle</title>
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
-  <h1>render <a href="https://github.com/46ra/minimal-triangle">Minimal-triangle</a></h1>
+  <h1>render <a href="https://github.com/mlnphl/minimal-triangle">minimal-triangle</a></h1>
 
   <textarea class="trigger" id="input"></textarea>
 
   <table id="options">
     <tr>
-      <td>letter width</td>
+      <td>character width</td>
       <td>(posisive int)</td>
       <td>
-        <input class="trigger" id="letter-w" type="number" min="1" value="64"> [px]
+        <input class="trigger" id="char-w" type="number" min="1" value="64"> [px]
       </td>
     </tr>
 
     <tr>
-      <td>line width</td>
+      <td>stroke width</td>
       <td>(positive int)</td>
       <td>
-        <input class="trigger" id="line-w" type="number" min="1" value="4"> [px]
+        <input class="trigger" id="stroke-w" type="number" min="1" value="4"> [px]
       </td>
     </tr>
 
     <tr>
-      <td>space between letters</td>
+      <td>space between characters</td>
       <td>(float)</td>
       <td>
-        <input class="trigger" id="space-x" type="number" value="0" step="any"> [letter]
+        <input class="trigger" id="space-x" type="number" value="0" step="any"> [character]
       </td>
     </tr>
 
@@ -40,7 +40,7 @@
       <td>space between lines</td>
       <td>(float)</td>
       <td>
-        <input class="trigger" id="space-y" type="number" value="0.5" step="any"> [letter]
+        <input class="trigger" id="space-y" type="number" value="0.5" step="any"> [character]
       </td>
     </tr>
 
@@ -48,7 +48,7 @@
       <td>margin</td>
       <td>(nonnegative float)</td>
       <td>
-        <input class="trigger" id="margin" type="number" min="0" value="0.5" step="any"> [letter]
+        <input class="trigger" id="margin" type="number" min="0" value="0.5" step="any"> [character]
       </td>
     </tr>
 
@@ -70,9 +70,13 @@
   </table>
 
   <canvas id="output"></canvas>
+  <button type="button" id="download">
+    download
+  </button>
+
 
   <div>
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">tweet</a>
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="true">tweet</a>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
 </body>

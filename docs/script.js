@@ -150,8 +150,8 @@ document.addEventListener("DOMContentLoaded", event => {
 
   for (const [f, id] of [
       [x => x, "input"],
-      [parseInt, "letter-w"],
-      [parseInt, "line-w"],
+      [parseInt, "char-w"],
+      [parseInt, "stroke-w"],
       [parseFloat, "space-x"],
       [parseFloat, "space-y"],
       [parseFloat, "margin"],
@@ -168,8 +168,8 @@ document.addEventListener("DOMContentLoaded", event => {
   document.getElementById("input").addEventListener("focusout", () => {
     const queryString =
       "?" + [
-        "letter-w",
-        "line-w",
+        "char-w",
+        "stroke-w",
         "space-x",
         "space-y",
         "margin",
@@ -183,6 +183,10 @@ document.addEventListener("DOMContentLoaded", event => {
     window.location.search =
       encodeURIComponent(window.location.search.split("?")[0] + queryString);
   })
+
+  document.getElementById("download").addEventListener("click", () => {
+
+  });
 });
 
 const render = () => {
@@ -191,14 +195,14 @@ const render = () => {
 
   const input = document.getElementById("input").value;
   const lines = input.split(/\r?\n/);
-  const letterW = parseInt(document.getElementById("letter-w").value);
+  const charW = parseInt(document.getElementById("char-w").value);
   const spaceX = parseFloat(document.getElementById("space-x").value);
   const spaceY = parseFloat(document.getElementById("space-y").value);
   const margin = parseFloat(document.getElementById("margin").value);
   const lenX = Math.max(...lines.map(line => line.length));
   const lenY = lines.length;
-  canvas.width = (margin * 2 + lenX + (lenX - 1) * spaceX) * letterW;
-  canvas.height = (margin * 2 + lenY + (lenY - 1) * spaceY) * letterW;
+  canvas.width  = (margin * 2 + lenX + (lenX - 1) * spaceX) * charW;
+  canvas.height = (margin * 2 + lenY + (lenY - 1) * spaceY) * charW;
 
   ctx.fillStyle = document.getElementById("bg-color").value;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -213,7 +217,7 @@ const render = () => {
             path[0][1],
             i,
             j,
-            letterW,
+            charW,
             margin,
             spaceX,
             spaceY
@@ -222,7 +226,7 @@ const render = () => {
 
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
-        ctx.lineWidth = parseInt(document.getElementById("line-w").value);
+        ctx.lineWidth = parseInt(document.getElementById("stroke-w").value);
 
         ctx.strokeStyle = document.getElementById("color").value;
         /* ctx.imageSmoothingEnabled = document.getElementById(
@@ -231,13 +235,13 @@ const render = () => {
 
         for (const [x, y] of path.slice(1))
           ctx.lineTo(
-            ...coordinate(x, y, i, j, letterW, margin, spaceX, spaceY)
+            ...coordinate(x, y, i, j, charW, margin, spaceX, spaceY)
           );
       }
   ctx.stroke();
 };
 
-const coordinate = (x, y, i, j, letterW, margin, spaceX, spaceY) => [
-  (margin + i * (1 + spaceX) + x / unit) * letterW,
-  (margin + j * (1 + spaceY) + y / unit) * letterW
+const coordinate = (x, y, i, j, charW, margin, spaceX, spaceY) => [
+  (margin + i * (1 + spaceX) + x / unit) * charW,
+  (margin + j * (1 + spaceY) + y / unit) * charW
 ];
